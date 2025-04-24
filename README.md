@@ -1,73 +1,101 @@
-# Welcome to your Lovable project
+# Electoral Map of Asunción, Paraguay
 
-## Project info
+An interactive electoral map application to visualize voting data by neighborhood for Asunción, Paraguay. The application is built using the PERN stack (PostgreSQL, Express, React, Node.js) with Leaflet for map visualization.
 
-**URL**: https://lovable.dev/projects/be4b0cf1-31c3-4498-bc50-4f55e400911b
+## Features
 
-## How can I edit this code?
+- Interactive choropleth map of Asunción neighborhoods
+- Color-coded visualization of voting data
+- Filtering by election year with comparative analysis
+- Detailed popup information for each neighborhood
+- Data export capabilities (CSV, GeoJSON)
+- Authentication system
+- Responsive design for desktop and mobile
 
-There are several ways of editing your application.
+## Technology Stack
 
-**Use Lovable**
+- **Database**: PostgreSQL 15+ with PostGIS extension
+- **Backend**: Node.js 18+, Express 4.18+
+- **Frontend**: React 18+, Leaflet 1.9+, Tailwind CSS
+- **Map Tiles**: OpenStreetMap
+- **Geospatial Processing**: Shapefile.js, Turf.js
+- **Authentication**: JWT-based auth system
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/be4b0cf1-31c3-4498-bc50-4f55e400911b) and start prompting.
+## Setup Instructions
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js 18+
+- PostgreSQL 15+ with PostGIS extension
+- Git (optional)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Clone the repository:
+   ```
+   git clone <repository-url>
+   cd electoral-map-asuncion
+   ```
 
-Follow these steps:
+2. Install dependencies:
+   ```
+   npm run install:all
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3. Configure environment variables:
+   ```
+   cp server/.env.example server/.env
+   ```
+   Edit the `.env` file with your database credentials and JWT secret.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+4. Set up the database:
+   - Create a PostgreSQL database
+   - Install PostGIS extension in the database
+   - The application will automatically create the tables on first run
 
-# Step 3: Install the necessary dependencies.
-npm i
+5. Start the development server:
+   ```
+   npm run dev
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Shapefile Import
+
+1. Place your shapefiles in a directory
+2. Log in as an admin user
+3. Use the shapefile import feature to upload and process the files
+
+## Project Structure
+
+```
+/electoral-map-asuncion
+  /client              # React frontend
+  /server              # Express backend
+  /shapefiles          # Directory for shapefile storage
+  /uploads             # Uploaded files directory
 ```
 
-**Edit a file directly in GitHub**
+## API Endpoints
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Authentication
+- `POST /api/auth/login` - User login
+- `POST /api/auth/register` - User registration
+- `GET /api/auth/me` - Get current user
 
-**Use GitHub Codespaces**
+### Electoral Data
+- `GET /api/electoral/data` - Get electoral data with filters
+- `GET /api/electoral/years` - Get available election years
+- `GET /api/electoral/neighborhood/:id` - Get neighborhood details
+- `GET /api/electoral/export/:format` - Export data in specified format
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Shapefiles
+- `POST /api/shapefiles/upload` - Upload shapefile
+- `POST /api/shapefiles/process/:id` - Process uploaded shapefile
+- `GET /api/shapefiles/status/:id` - Get processing status
 
-## What technologies are used for this project?
+## Contributing
 
-This project is built with:
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## License
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/be4b0cf1-31c3-4498-bc50-4f55e400911b) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is licensed under the MIT License.

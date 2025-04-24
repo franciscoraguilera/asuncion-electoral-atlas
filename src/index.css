@@ -80,6 +80,12 @@
 
   .leaflet-container {
     @apply h-[calc(100vh-14rem)] md:h-[calc(100vh-12rem)] w-full rounded-lg border border-border shadow-md;
+    z-index: 10;
+  }
+
+  /* Ensure Radix UI Select content appears above Leaflet */
+  [data-radix-popper-content-wrapper] {
+    z-index: 1000 !important;
   }
 
   .legend {

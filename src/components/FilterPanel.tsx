@@ -40,7 +40,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
   onReset,
 }) => {
   return (
-    <Card className="w-full mb-4">
+    <Card className="w-full mb-4 relative">
       <CardHeader className="pb-3">
         <CardTitle className="text-lg font-semibold">Filtros</CardTitle>
         <CardDescription>
@@ -60,7 +60,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
               <SelectTrigger>
                 <SelectValue placeholder="Todos los partidos" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="z-[1001]">
                 <SelectItem value="all_parties">Todos los partidos</SelectItem>
                 {parties.map((party) => (
                   <SelectItem key={party.id} value={party.id}>
@@ -88,7 +88,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
               <SelectTrigger>
                 <SelectValue placeholder="Seleccionar año para comparar" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="z-[1001]">
                 <SelectItem value="no_comparison">Sin comparación</SelectItem>
                 {electionYears
                   .filter((year) => year.value !== currentYear)

@@ -1,0 +1,215 @@
+
+import { ElectionYear, Party, VotingData } from "@/types";
+
+export const electionYears: ElectionYear[] = [
+  { value: 2023, label: "2023" },
+  { value: 2018, label: "2018" },
+  { value: 2013, label: "2013" },
+];
+
+export const parties: Party[] = [
+  { id: "anr", name: "ANR", color: "#E63946" },
+  { id: "plra", name: "PLRA", color: "#457B9D" },
+  { id: "pq", name: "PQ", color: "#2A9D8F" },
+  { id: "independents", name: "Independientes", color: "#E9C46A" },
+  { id: "others", name: "Otros", color: "#9D4EDD" },
+];
+
+// This is mock data - in a real app this would come from the database
+export const mockVotingData: VotingData[] = [
+  {
+    id: "1",
+    neighborhood: "Barrio Jara",
+    votes: {
+      anr: 12500,
+      plra: 8700,
+      pq: 4200,
+      independents: 2100,
+      others: 1500,
+    },
+    totalVotes: 29000,
+    year: 2023,
+  },
+  {
+    id: "2",
+    neighborhood: "San Roque",
+    votes: {
+      anr: 9800,
+      plra: 11200,
+      pq: 3600,
+      independents: 1900,
+      others: 1100,
+    },
+    totalVotes: 27600,
+    year: 2023,
+  },
+  {
+    id: "3",
+    neighborhood: "Villa Morra",
+    votes: {
+      anr: 7600,
+      plra: 6200,
+      pq: 8100,
+      independents: 3400,
+      others: 900,
+    },
+    totalVotes: 26200,
+    year: 2023,
+  },
+  {
+    id: "4",
+    neighborhood: "Recoleta",
+    votes: {
+      anr: 10200,
+      plra: 9800,
+      pq: 2800,
+      independents: 1700,
+      others: 1200,
+    },
+    totalVotes: 25700,
+    year: 2023,
+  },
+  {
+    id: "5",
+    neighborhood: "Trinidad",
+    votes: {
+      anr: 8900,
+      plra: 7600,
+      pq: 3100,
+      independents: 2200,
+      others: 1000,
+    },
+    totalVotes: 22800,
+    year: 2023,
+  },
+  {
+    id: "6",
+    neighborhood: "Barrio Jara",
+    votes: {
+      anr: 11200,
+      plra: 7900,
+      pq: 3800,
+      independents: 1800,
+      others: 1300,
+    },
+    totalVotes: 26000,
+    year: 2018,
+  },
+  {
+    id: "7",
+    neighborhood: "San Roque",
+    votes: {
+      anr: 8700,
+      plra: 10100,
+      pq: 3200,
+      independents: 1700,
+      others: 900,
+    },
+    totalVotes: 24600,
+    year: 2018,
+  },
+  {
+    id: "8",
+    neighborhood: "Villa Morra",
+    votes: {
+      anr: 6800,
+      plra: 5500,
+      pq: 7200,
+      independents: 3000,
+      others: 800,
+    },
+    totalVotes: 23300,
+    year: 2018,
+  },
+  {
+    id: "9",
+    neighborhood: "Recoleta",
+    votes: {
+      anr: 9100,
+      plra: 8700,
+      pq: 2500,
+      independents: 1500,
+      others: 1000,
+    },
+    totalVotes: 22800,
+    year: 2018,
+  },
+  {
+    id: "10",
+    neighborhood: "Trinidad",
+    votes: {
+      anr: 7900,
+      plra: 6800,
+      pq: 2800,
+      independents: 1900,
+      others: 900,
+    },
+    totalVotes: 20300,
+    year: 2018,
+  },
+  {
+    id: "11",
+    neighborhood: "Barrio Jara",
+    votes: {
+      anr: 10000,
+      plra: 7000,
+      pq: 3400,
+      independents: 1500,
+      others: 1100,
+    },
+    totalVotes: 23000,
+    year: 2013,
+  },
+  {
+    id: "12",
+    neighborhood: "San Roque",
+    votes: {
+      anr: 7800,
+      plra: 9200,
+      pq: 2800,
+      independents: 1500,
+      others: 700,
+    },
+    totalVotes: 22000,
+    year: 2013,
+  },
+  {
+    id: "13",
+    neighborhood: "Villa Morra",
+    votes: {
+      anr: 6000,
+      plra: 5000,
+      pq: 6500,
+      independents: 2700,
+      others: 700,
+    },
+    totalVotes: 20900,
+    year: 2013,
+  },
+  {
+    id: "14",
+    neighborhood: "Recoleta",
+    votes: {
+      anr: 8200,
+      plra: 7900,
+      pq: 2200,
+      independents: 1300,
+      others: 800,
+    },
+    totalVotes: 20400,
+    year: 2013,
+  },
+  {
+    id: "15",
+    neighborhood: "Trinidad",
+    votes: {
+      anr: 7000,
+      plra: 6100,
+      pq: 2500,
+      independents: 1700,
+      others: 700,
+    },
+    totalVotes: 18000,
+    year: 2013,
+  },
+];

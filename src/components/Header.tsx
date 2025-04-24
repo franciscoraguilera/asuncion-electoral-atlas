@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ElectionYear } from "@/types";
-import { ArrowDownload } from "lucide-react";
+import { ArrowDown } from "lucide-react";  // Changed from ArrowDownload to ArrowDown
 
 interface HeaderProps {
   title: string;
@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({
         </div>
         <div className="flex items-center mt-4 md:mt-0 space-x-2">
           <Button variant="outline" size="sm" className="h-9">
-            <ArrowDownload className="h-4 w-4 mr-2" />
+            <ArrowDown className="h-4 w-4 mr-2" />
             Exportar
           </Button>
         </div>

@@ -54,14 +54,14 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
               Partido Político
             </label>
             <Select
-              value={selectedParty || ""}
-              onValueChange={(value) => onPartyChange(value || null)}
+              value={selectedParty || "all_parties"}
+              onValueChange={(value) => onPartyChange(value === "all_parties" ? null : value)}
             >
               <SelectTrigger>
                 <SelectValue placeholder="Todos los partidos" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Todos los partidos</SelectItem>
+                <SelectItem value="all_parties">Todos los partidos</SelectItem>
                 {parties.map((party) => (
                   <SelectItem key={party.id} value={party.id}>
                     <div className="flex items-center">
@@ -82,14 +82,14 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
               Comparar con el año
             </label>
             <Select
-              value={comparisonYear?.toString() || ""}
-              onValueChange={(value) => onComparisonYearChange(value ? Number(value) : null)}
+              value={comparisonYear?.toString() || "no_comparison"}
+              onValueChange={(value) => onComparisonYearChange(value === "no_comparison" ? null : Number(value))}
             >
               <SelectTrigger>
                 <SelectValue placeholder="Seleccionar año para comparar" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Sin comparación</SelectItem>
+                <SelectItem value="no_comparison">Sin comparación</SelectItem>
                 {electionYears
                   .filter((year) => year.value !== currentYear)
                   .map((year) => (

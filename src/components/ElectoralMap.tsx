@@ -226,6 +226,11 @@ const ElectoralMap: React.FC<ElectoralMapProps> = ({ filters }) => {
     }
   };
 
+  // Create a style function for GeoJSON components
+  const styleFunction = (feature: any) => {
+    return getFeatureStyle(feature, filters.party);
+  };
+
   return (
     <div className="relative">
       <Card className="overflow-hidden">
@@ -238,23 +243,46 @@ const ElectoralMap: React.FC<ElectoralMapProps> = ({ filters }) => {
           </div>
         ) : (
           <MapContainer
-            center={asuncionCenter}
+            className="h-[70vh]"
             zoom={13}
             scrollWheelZoom={true}
-            style={{ height: "70vh" }}
+            bounds={L.latLngBounds([
+              [-25.35, -57.70],
+              [-25.25, -57.55]
+            ])}
           >
             <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
 
             <MapRecenter position={asuncionCenter} />
 
             {geoJsonData && (
               <GeoJSON
+                key={filters.year + (filters.party || 'all')}
                 data={geoJsonData}
-                style={(feature) => getFeatureStyle(feature, filters.party)}
-                onEachFeature={onEachFeature}
+                pathOptions={{
+                  color: '#666',
+                  weight: 1,
+                  opacity: 1,
+                }}
+                eventHandlers={{
+                  click: (e: any) => {
+                    console.log("Feature clicked:", e.layer.feature.properties);
+                  },
+                  mouseover: (e: any) => {
+                    const layer = e.layer;
+                    setSelectedFeature({ properties: layer.feature.properties });
+                    layer.setStyle({ weight: 2, opacity: 1, color: "#000" });
+                  },
+                  mouseout: (e: any) => {
+                    const layer = e.layer;
+                    setSelectedFeature(null);
+                    layer.setStyle({ weight: 1, opacity: 1, color: "#666" });
+                  },
+                }}
+                style={styleFunction}
               />
             )}
           </MapContainer>

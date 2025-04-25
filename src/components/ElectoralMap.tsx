@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { MapContainer, TileLayer, GeoJSON, Tooltip, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON, Tooltip } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { Card } from "@/components/ui/card";
@@ -14,10 +14,14 @@ import shp from "shpjs";
 
 // Map recenter component to allow programmatic recentering
 const MapRecenter = ({ position }: { position: [number, number] }) => {
-  const map = useMap();
-  useEffect(() => {
-    map.setView(position);
-  }, [position, map]);
+  const map = React.useRef<L.Map | null>(null);
+  
+  React.useEffect(() => {
+    if (map.current) {
+      map.current.setView(position);
+    }
+  }, [position]);
+  
   return null;
 };
 
@@ -244,45 +248,21 @@ const ElectoralMap: React.FC<ElectoralMapProps> = ({ filters }) => {
         ) : (
           <MapContainer
             className="h-[70vh]"
+            center={asuncionCenter}
             zoom={13}
             scrollWheelZoom={true}
-            bounds={L.latLngBounds([
-              [-25.35, -57.70],
-              [-25.25, -57.55]
-            ])}
           >
             <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-
-            <MapRecenter position={asuncionCenter} />
 
             {geoJsonData && (
               <GeoJSON
                 key={filters.year + (filters.party || 'all')}
                 data={geoJsonData}
-                pathOptions={{
-                  color: '#666',
-                  weight: 1,
-                  opacity: 1,
-                }}
-                eventHandlers={{
-                  click: (e: any) => {
-                    console.log("Feature clicked:", e.layer.feature.properties);
-                  },
-                  mouseover: (e: any) => {
-                    const layer = e.layer;
-                    setSelectedFeature({ properties: layer.feature.properties });
-                    layer.setStyle({ weight: 2, opacity: 1, color: "#000" });
-                  },
-                  mouseout: (e: any) => {
-                    const layer = e.layer;
-                    setSelectedFeature(null);
-                    layer.setStyle({ weight: 1, opacity: 1, color: "#666" });
-                  },
-                }}
                 style={styleFunction}
+                onEachFeature={onEachFeature}
               />
             )}
           </MapContainer>
@@ -318,8 +298,8 @@ const ElectoralMap: React.FC<ElectoralMapProps> = ({ filters }) => {
                     data.neighborhood === selectedFeature.properties.name && 
                     data.year === filters.year
                   )
-                  ?.locations.map(location => {
-                    const percentage = ((location.totalVotes / selectedFeature.properties.totalVotes!) * 100).toFixed(1);
+                  ?.locations?.map(location => {
+                    const percentage = ((location.totalVotes / (selectedFeature.properties.totalVotes || 1)) * 100).toFixed(1);
                     return (
                       <div key={location.id} className="py-2">
                         <p className="font-medium">{location.name}</p>
@@ -329,7 +309,7 @@ const ElectoralMap: React.FC<ElectoralMapProps> = ({ filters }) => {
                         </p>
                       </div>
                     );
-                  })}
+                  }) || <p className="py-2 text-muted-foreground">No hay locales disponibles</p>}
               </div>
             </div>
           )}

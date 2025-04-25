@@ -1,3 +1,4 @@
+
 import { ElectionYear, Party, VotingData } from "@/types";
 
 export const electionYears: ElectionYear[] = [
@@ -60,6 +61,34 @@ export const mockVotingData: VotingData[] = [
   {
     id: "2",
     neighborhood: "San Roque",
+    locations: [
+      {
+        id: "2-1",
+        name: "Escuela República de Colombia",
+        address: "Dr. Paiva 376",
+        votes: {
+          anr: 5800,
+          plra: 7200,
+          pq: 2100,
+          independents: 1100,
+          others: 600,
+        },
+        totalVotes: 16800,
+      },
+      {
+        id: "2-2",
+        name: "Colegio Técnico Nacional",
+        address: "Mcal. Estigarribia 841",
+        votes: {
+          anr: 4000,
+          plra: 4000,
+          pq: 1500,
+          independents: 800,
+          others: 500,
+        },
+        totalVotes: 10800,
+      },
+    ],
     votes: {
       anr: 9800,
       plra: 11200,
@@ -73,6 +102,34 @@ export const mockVotingData: VotingData[] = [
   {
     id: "3",
     neighborhood: "Villa Morra",
+    locations: [
+      {
+        id: "3-1",
+        name: "Instituto Superior de Educación",
+        address: "Avda. Eusebio Ayala km 4,5",
+        votes: {
+          anr: 4500,
+          plra: 3700,
+          pq: 5600,
+          independents: 2100,
+          others: 500,
+        },
+        totalVotes: 16400,
+      },
+      {
+        id: "3-2",
+        name: "Colegio Internacional",
+        address: "Mariscal López 3450",
+        votes: {
+          anr: 3100,
+          plra: 2500,
+          pq: 2500,
+          independents: 1300,
+          others: 400,
+        },
+        totalVotes: 9800,
+      },
+    ],
     votes: {
       anr: 7600,
       plra: 6200,
@@ -86,6 +143,34 @@ export const mockVotingData: VotingData[] = [
   {
     id: "4",
     neighborhood: "Recoleta",
+    locations: [
+      {
+        id: "4-1",
+        name: "Colegio Cristo Rey",
+        address: "Bulnes 510",
+        votes: {
+          anr: 6100,
+          plra: 5900,
+          pq: 1700,
+          independents: 1000,
+          others: 700,
+        },
+        totalVotes: 15400,
+      },
+      {
+        id: "4-2",
+        name: "Escuela República Argentina",
+        address: "Colón 827",
+        votes: {
+          anr: 4100,
+          plra: 3900,
+          pq: 1100,
+          independents: 700,
+          others: 500,
+        },
+        totalVotes: 10300,
+      },
+    ],
     votes: {
       anr: 10200,
       plra: 9800,
@@ -99,6 +184,34 @@ export const mockVotingData: VotingData[] = [
   {
     id: "5",
     neighborhood: "Trinidad",
+    locations: [
+      {
+        id: "5-1",
+        name: "Colegio Nacional EMD Dr. Fernando de la Mora",
+        address: "Calle Incas 2145",
+        votes: {
+          anr: 5300,
+          plra: 4600,
+          pq: 1900,
+          independents: 1300,
+          others: 600,
+        },
+        totalVotes: 13700,
+      },
+      {
+        id: "5-2",
+        name: "Escuela Básica N° 412 Don Carlos Antonio López",
+        address: "Avda. Mcal. López esq. Cerro León",
+        votes: {
+          anr: 3600,
+          plra: 3000,
+          pq: 1200,
+          independents: 900,
+          others: 400,
+        },
+        totalVotes: 9100,
+      },
+    ],
     votes: {
       anr: 8900,
       plra: 7600,
@@ -112,6 +225,7 @@ export const mockVotingData: VotingData[] = [
   {
     id: "6",
     neighborhood: "Barrio Jara",
+    locations: [],
     votes: {
       anr: 11200,
       plra: 7900,
@@ -125,6 +239,7 @@ export const mockVotingData: VotingData[] = [
   {
     id: "7",
     neighborhood: "San Roque",
+    locations: [],
     votes: {
       anr: 8700,
       plra: 10100,
@@ -138,6 +253,7 @@ export const mockVotingData: VotingData[] = [
   {
     id: "8",
     neighborhood: "Villa Morra",
+    locations: [],
     votes: {
       anr: 6800,
       plra: 5500,
@@ -151,6 +267,7 @@ export const mockVotingData: VotingData[] = [
   {
     id: "9",
     neighborhood: "Recoleta",
+    locations: [],
     votes: {
       anr: 9100,
       plra: 8700,
@@ -164,6 +281,7 @@ export const mockVotingData: VotingData[] = [
   {
     id: "10",
     neighborhood: "Trinidad",
+    locations: [],
     votes: {
       anr: 7900,
       plra: 6800,
@@ -177,6 +295,7 @@ export const mockVotingData: VotingData[] = [
   {
     id: "11",
     neighborhood: "Barrio Jara",
+    locations: [],
     votes: {
       anr: 10000,
       plra: 7000,
@@ -190,6 +309,7 @@ export const mockVotingData: VotingData[] = [
   {
     id: "12",
     neighborhood: "San Roque",
+    locations: [],
     votes: {
       anr: 7800,
       plra: 9200,
@@ -203,6 +323,7 @@ export const mockVotingData: VotingData[] = [
   {
     id: "13",
     neighborhood: "Villa Morra",
+    locations: [],
     votes: {
       anr: 6000,
       plra: 5000,
@@ -216,6 +337,7 @@ export const mockVotingData: VotingData[] = [
   {
     id: "14",
     neighborhood: "Recoleta",
+    locations: [],
     votes: {
       anr: 8200,
       plra: 7900,
@@ -229,6 +351,7 @@ export const mockVotingData: VotingData[] = [
   {
     id: "15",
     neighborhood: "Trinidad",
+    locations: [],
     votes: {
       anr: 7000,
       plra: 6100,

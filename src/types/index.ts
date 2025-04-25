@@ -1,4 +1,3 @@
-
 export interface VotingData {
   id: string;
   neighborhood: string;
@@ -18,6 +17,27 @@ export interface Party {
   id: string;
   name: string;
   color: string;
+}
+
+export interface VotingLocation {
+  id: string;
+  name: string;
+  address: string;
+  votes: {
+    [party: string]: number;
+  };
+  totalVotes: number;
+}
+
+export interface VotingData {
+  id: string;
+  neighborhood: string;
+  locations: VotingLocation[];
+  votes: {
+    [party: string]: number;
+  };
+  totalVotes: number;
+  year: number;
 }
 
 export interface NeighborhoodProperties {

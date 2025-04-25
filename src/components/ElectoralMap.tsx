@@ -290,14 +290,14 @@ const ElectoralMap: React.FC<ElectoralMapProps> = ({ filters }) => {
       </Card>
 
       {selectedFeature && (
-        <div className="absolute bottom-5 left-5 bg-white p-3 rounded shadow-lg max-w-xs z-[1000] border border-border">
-          <h3 className="font-medium mb-1">{selectedFeature.properties.name}</h3>
+        <div className="absolute bottom-5 left-5 bg-white p-4 rounded shadow-lg max-w-md z-[1000] border border-border">
+          <h3 className="font-medium mb-2">{selectedFeature.properties.name}</h3>
           {selectedFeature.properties.votes && (
-            <div className="text-sm">
-              <p className="mb-1">
+            <div className="text-sm space-y-3">
+              <p className="font-medium">
                 Total de votos: {selectedFeature.properties.totalVotes?.toLocaleString()}
               </p>
-              <div className="h-1 w-full bg-gray-200 rounded-full mb-2">
+              <div className="h-1 w-full bg-gray-200 rounded-full mb-3">
                 <div
                   className="h-1 rounded-full"
                   style={{
@@ -309,6 +309,27 @@ const ElectoralMap: React.FC<ElectoralMapProps> = ({ filters }) => {
                       : "#9D4EDD",
                   }}
                 ></div>
+              </div>
+              
+              <div className="divide-y divide-border">
+                <p className="font-medium pb-2">Locales de votación:</p>
+                {mockVotingData
+                  .find(data => 
+                    data.neighborhood === selectedFeature.properties.name && 
+                    data.year === filters.year
+                  )
+                  ?.locations.map(location => {
+                    const percentage = ((location.totalVotes / selectedFeature.properties.totalVotes!) * 100).toFixed(1);
+                    return (
+                      <div key={location.id} className="py-2">
+                        <p className="font-medium">{location.name}</p>
+                        <p className="text-xs text-muted-foreground">{location.address}</p>
+                        <p className="text-sm mt-1">
+                          {location.totalVotes.toLocaleString()} votos ({percentage}% del total)
+                        </p>
+                      </div>
+                    );
+                  })}
               </div>
             </div>
           )}

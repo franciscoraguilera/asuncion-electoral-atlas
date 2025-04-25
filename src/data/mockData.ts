@@ -1,4 +1,3 @@
-
 import { ElectionYear, Party, VotingData } from "@/types";
 
 export const electionYears: ElectionYear[] = [
@@ -20,6 +19,34 @@ export const mockVotingData: VotingData[] = [
   {
     id: "1",
     neighborhood: "Barrio Jara",
+    locations: [
+      {
+        id: "1-1",
+        name: "Colegio Nacional de la Capital",
+        address: "Av. Mariscal López 1750",
+        votes: {
+          anr: 8000,
+          plra: 5200,
+          pq: 2500,
+          independents: 1300,
+          others: 900,
+        },
+        totalVotes: 17900,
+      },
+      {
+        id: "1-2",
+        name: "Iglesia San Cristóbal",
+        address: "Av. Santísimo Sacramento 942",
+        votes: {
+          anr: 4500,
+          plra: 3500,
+          pq: 1700,
+          independents: 800,
+          others: 600,
+        },
+        totalVotes: 11100,
+      }
+    ],
     votes: {
       anr: 12500,
       plra: 8700,
